@@ -2,11 +2,15 @@ import java.util.*;
 
 public class Event {
         protected ArrayList<String> events = new ArrayList<String>();
+	protected String randomEvent;
 
         public Event(){
-                events.add("Event 1");
-                events.add("Event 2");
-                events.add("Event 3");
+                events.add("You took your pet to the park and had a picnic! +2 Boredom, +2 Hunger, -1 Energy.");
+                events.add("You gave your pet a bath. +2 Boredom, +2 Energy.");
+                events.add("Your pet stepped on a bee! -10 Health.");
+		events.add("Your pet got into the food! +2 Hunger");
+		events.add("You trained your pet. +2 Boredom, -1 Energy.");
+		events.add("You took your pet to the vet.");
 		
 		/*
                 for (int i = 0; i < events.size(); i++){
@@ -22,12 +26,13 @@ public class Event {
         }//end main
 	*/
 
-	public void eventRoll(){
+	public String eventRoll(){
 	//gets a random event and prints it
 		Random rand = new Random();
 		int randomIndex = rand.nextInt(events.size());
 		String randomEvent = events.get(randomIndex);
-		System.out.println("Random Event: " + randomEvent);
+		//System.out.println("Random Event: " + randomEvent);
+		return randomEvent;
 	}//end eventRoll
 
 
