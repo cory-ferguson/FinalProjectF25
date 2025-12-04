@@ -59,27 +59,34 @@ public class Game {
 				System.out.println("Game Over.");
 				keepGoing = false;
 			} else {
-
+				System.out.println("---------------------------");
 				String response = menu();
 				if (response.equals("0")){
 					System.out.println("Response was 0"); //testing purposes
 					
 					//Handles dog stats
 					dog.changeEnergyPos(dog.energy, 1); //increases energy
+					dog.rollHunger(dog.hunger); //should roll randomly to see if the stat went down.
+					dog.rollBoredom(dog.boredom); //should roll to see if stat went down.
+					/*
 					dog.changeHunger(dog.hunger, 1);
 					dog.changeBoredom(dog.boredom, 1);
+					*/
+					
 					dog.changeHealth();
 					System.out.println("New Dog Stats: ");
 					dog.printStats();
 					
+					
+
 					//Handles cat stats
 					cat.changeEnergyPos(cat.energy, 1); //increases energy
-					cat.changeHunger(cat.hunger, 1);
-					cat.changeBoredom(cat.boredom, 1);
+					cat.rollHunger(cat.hunger);
+					cat.rollBoredom(cat.boredom);
 					cat.changeHealth();
 					System.out.println("New Cat Stats: ");
 					cat.printStats();
-
+					
 				} else if (response.equals("1")){
 					System.out.println("Response was 1");
 					System.out.println("0) Dog? or");
@@ -89,7 +96,7 @@ public class Game {
 						//If user chose dog
 						System.out.println("Chose dog."); //testing purposes
 						//Handles dog stats
-                                        	dog.changeEnergy(dog.energy, 1);
+                                        	dog.rollEnergy(dog.energy); //rolls to see if stat goes down
                                         	dog.changeHungerPos(dog.hunger, 1); //feeding dog
                                         	dog.changeBoredomPos(dog.boredom, 1); //increases since you're interacting with dog
                                         	dog.changeHealth();
@@ -97,9 +104,9 @@ public class Game {
                                         	dog.printStats();
 
                                         	//Handles cat stats
-                                        	cat.changeEnergy(cat.energy, 1);
-                                        	cat.changeHunger(cat.hunger, 1);
-                                        	cat.changeBoredom(cat.boredom, 1);
+                                        	cat.rollEnergy(cat.energy);
+                                        	cat.rollHunger(cat.hunger);
+                                        	cat.rollBoredom(cat.boredom);
                                         	cat.changeHealth();
                                         	System.out.println("New Cat Stats: ");
                                         	cat.printStats();
@@ -108,15 +115,15 @@ public class Game {
 						//If user chose cat
 						System.out.println("Chose cat."); //testing purposes
                                                 //Handles dog stats
-                                                dog.changeEnergy(dog.energy, 1);
-                                                dog.changeHunger(dog.hunger, 1); 
-                                                dog.changeBoredom(dog.boredom, 1);
+                                                dog.rollEnergy(dog.energy);
+                                                dog.rollHunger(dog.hunger); 
+                                                dog.rollBoredom(dog.boredom);
                                                 dog.changeHealth();
                                                 System.out.println("New Dog Stats: ");
                                                 dog.printStats();
 
                                                 //Handles cat stats
-                                                cat.changeEnergy(cat.energy, 1);
+                                                cat.rollEnergy(cat.energy); 
                                                 cat.changeHungerPos(cat.hunger, 1); //feeding cat
                                                 cat.changeBoredomPos(cat.boredom, 1); //increases since you're interacting with cat
                                                 cat.changeHealth();
@@ -135,17 +142,17 @@ public class Game {
                                                 //If user chose dog
                                                 System.out.println("Chose dog."); //testing purposes
                                                 //Handles dog stats
-                                                dog.changeEnergy(dog.energy, 1);
-                                                dog.changeHunger(dog.hunger, 1);
+                                                dog.rollEnergy(dog.energy);
+                                                dog.rollHunger(dog.hunger);
                                                 dog.changeBoredomPos(dog.boredom, 1); //playing with dog
                                                 dog.changeHealth();
                                                 System.out.println("New Dog Stats: ");
                                                 dog.printStats();
 
                                                 //Handles cat stats
-                                                cat.changeEnergy(cat.energy, 1);
-                                                cat.changeHunger(cat.hunger, 1);
-                                                cat.changeBoredom(cat.boredom, 1);
+                                                cat.rollEnergy(cat.energy);
+                                                cat.rollHunger(cat.hunger);
+                                                cat.rollBoredom(cat.boredom);
                                                 cat.changeHealth();
                                                 System.out.println("New Cat Stats: ");
                                                 cat.printStats();
@@ -154,16 +161,16 @@ public class Game {
                                                 //If user chose cat
                                                 System.out.println("Chose cat."); //testing purposes
                                                 //Handles dog stats
-                                                dog.changeEnergy(dog.energy, 1);
-                                                dog.changeHunger(dog.hunger, 1);
-                                                dog.changeBoredom(dog.boredom, 1);
+                                                dog.rollEnergy(dog.energy);
+                                                dog.rollHunger(dog.hunger);
+                                                dog.rollBoredom(dog.boredom);
                                                 dog.changeHealth();
                                                 System.out.println("New Dog Stats: ");
                                                 dog.printStats();
 
                                                 //Handles cat stats
-                                                cat.changeEnergy(cat.energy, 1);
-                                                cat.changeHunger(cat.hunger, 1); 
+                                                cat.rollEnergy(cat.energy);
+                                                cat.rollHunger(cat.hunger); 
                                                 cat.changeBoredomPos(cat.boredom, 1); //playing with cat
                                                 cat.changeHealth();
                                                 System.out.println("New Cat Stats: ");
@@ -184,10 +191,7 @@ public class Game {
 
 
 	public String menu(){
-		System.out.println("0) Do nothing");
-		System.out.println("1) Feed pet");
-		System.out.println("2) Play with pet");
-		System.out.println("3) Quit");
+		System.out.print("0) Do nothing.  1) Feed pet.  2) Play with pet.  3) Quit. :");
 		String response = input.nextLine();
 		return response;
 	}//end menu

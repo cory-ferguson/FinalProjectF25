@@ -1,6 +1,7 @@
 import java.util.*;
 
 public class Pet {
+	Random rand = new Random();
 	protected String petName;
 	protected Event event = new Event();  
 	
@@ -153,6 +154,52 @@ public class Pet {
 			setBoredom(newBoredom);
 		}//end if
 	}//end changeBoredomPos
+
+	
+	public void rollEnergy(int energy){
+		int randNumber = rand.nextInt(2) + 1; //rolls a random number between 1 and 2
+		if (randNumber == 1){
+			energy--;
+			System.out.println("Energy went down."); //testing
+			setEnergy(energy);
+		}//end if
+
+		//makes sure stat cannot go under 0
+                if (energy <= 0){
+                        energy = 0;
+                        setEnergy(energy);
+                }//end if
+	}//end rollEnergy
+	
+	public void rollHunger(int hunger){
+		int randNumber = rand.nextInt(2) + 1;
+		if (randNumber == 1){
+			hunger--;
+			System.out.println("Hunger went down."); //testing
+			setHunger(hunger);
+		}//end if
+		
+		//makes sure stat cannot go under 0
+                if (hunger <= 0){
+                        hunger = 0;
+                        setHunger(hunger);
+                }//end if
+	}//end rollHunger
+	
+	public void rollBoredom(int boredom){
+		int randNumber = rand.nextInt(2) + 1;
+		if (randNumber == 1){
+			boredom--;
+			System.out.println("Boredom went down."); //testing
+			setBoredom(boredom);
+		}//end if
+
+		//makes sure stat cannot go under 0
+                if (boredom <= 0){
+                        boredom = 0;
+                        setBoredom(boredom);
+                }//end if
+	}//end rollBoredom
 
 
 	public int getHealth(){
